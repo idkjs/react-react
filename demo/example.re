@@ -9,9 +9,9 @@ module ShowName = {
       name =>
         if (name != "") {
           let greeting = {j|Hello, $name!|j};
-          <p> {ReasonReact.string(greeting)} </p>;
+          <p> {React.string(greeting)} </p>;
         } else {
-          <p> {ReasonReact.string("Hello, unknown person!")} </p>;
+          <p> {React.string("Hello, unknown person!")} </p>;
         },
       propsS,
     );
@@ -33,7 +33,7 @@ module Timer = {
       time => {
         let timeMessage = time == 1 ? "second" : "seconds";
         let message = {j|You've spent $time $timeMessage on this page!|j};
-        <div> {ReasonReact.string(message)} </div>;
+        <div> {React.string(message)} </div>;
       },
       timeS,
     );
@@ -58,4 +58,8 @@ module Input = {
   let make = () => componentFromSignal(vdomS, ());
 };
 
-ReactDOMRe.renderToElementWithId(<Input />, "index");
+// ReactDOM.renderToElementWithId(<Input />, "index");
+switch(ReactDOM.querySelector("#index")) {
+| Some(root) => ReactDOM.render(<Input />, root)
+| None => () // do nothing
+}

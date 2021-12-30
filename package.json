@@ -18,15 +18,15 @@
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reason-react": ">=0.9.1"
+    "@rescript/react": ">=0.10.3"
   },
   "devDependencies": {
+    "@rescript/react": "^0.10.3",
     "bs-platform": "^9.0.2",
     "html-webpack-plugin": "^5.5.0",
     "moduleserve": "^0.9.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reason-react": ">=0.9.1",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2"

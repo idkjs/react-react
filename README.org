@@ -15,7 +15,7 @@
 
    This library provides the function ~componentFromSignal~, which is
    like recompose's ~componentFromStream~. With this library, you
-   have a bridge between React and ReasonReact.
+   have a bridge between React and React.
 
 ** Installation
 
@@ -83,7 +83,7 @@
            (time) => {
              let timeMessage = time == 1 ? "second" : "seconds";
              let greeting = {j|You've spent $time $timeMessage on this page!|j};
-             <div> (ReasonReact.string(greeting)) </div>
+             <div> (React.string(greeting)) </div>
            }
          ),
          timeS
@@ -98,7 +98,7 @@
 
    Notice that I pass a function ~eq~ that always returns false to
    ~S.map~. I do that because equality between
-   ~ReasonReact.reactElement~ is always true, and React only updates
+   ~React.reactElement~ is always true, and React only updates
    the signal when it detects that it has changed. So I need to force
    it to understand that it has changed (see [[http://erratique.ch/software/react/doc/React.html#sigeq][Equality]] in React's
    documentation).
@@ -120,15 +120,15 @@
             (name) =>
               if (name != "") {
                 let greeting = {j|Hello, $name!|j};
-                <p> (ReasonReact.string(greeting)) </p>
+                <p> (React.string(greeting)) </p>
               } else {
-                <p> (ReasonReact.string("Hello, unknown person!")) </p>
+                <p> (React.string("Hello, unknown person!")) </p>
               },
             propsS
           );
         /* Notice how I pass the name prop to componentFromSignal */
         [@react.component]
-        let make = (~name) => ReasonReact.componentFromSignal(vdomS, name);
+        let make = (~name) => React.componentFromSignal(vdomS, name);
       };
 
       /* This time we won't update the signal automatically, instead we'll
@@ -231,9 +231,9 @@
                 ({name}) =>
                   if (name != "") {
                     let greeting = {j|Hello, $name!|j};
-                    <p> (ReasonReact.string(greeting)) </p>
+                    <p> (React.string(greeting)) </p>
                   } else {
-                    <p> (ReasonReact.string("Hello, unknown person!")) </p>
+                    <p> (React.string("Hello, unknown person!")) </p>
                   },
                 propsS
               );
@@ -264,4 +264,4 @@
 
    But the terminology got popular, so it's more intuitive for most
    people if I just describe this library as a FRP bridge for
-   ReasonReact.
+   React.

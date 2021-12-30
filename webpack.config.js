@@ -8,7 +8,7 @@ module.exports = {
   mode: isProd ? "production" : "development",
   devtool: "source-map",
   entry: {
-    example: './src/example.bs.js',
+    example: './demo/example.bs.js',
   },
   output: {
     path: outputDir,
