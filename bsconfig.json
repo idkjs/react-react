@@ -11,6 +11,9 @@
       "dev": true
     }
   ],
+  "warnings": {
+    "number": "-48"
+  },
   "package-specs": [
     {
       "module": "commonjs",

@@ -1,4 +1,4 @@
-open ReactFrp.React;
+open ReactFrp.React
 
 /*
    Generates a ReasonReact component from a ReactFrp signal.
@@ -15,8 +15,7 @@ open ReactFrp.React;
    usually a tuple, but you can create a custom type for it. The value
    will be fed to a signal.
  */
-let componentFromSignal:
-  (signal('a) => signal(React.element), 'a) => React.element;
+let componentFromSignal: (signal<'a> => signal<React.element>, 'a) => React.element
 
 module Utils: {
   /*
@@ -41,15 +40,14 @@ module Utils: {
 
      It's called ToStream because it supports both signals and events
 
-   */
-  let emitEventToStream: ('a => unit, ReactEvent.Form.t) => unit;
+ */
+  let emitEventToStream: ('a => unit, ReactEvent.Form.t) => unit
   /*
 
      Converts a Js.Promise.t into an event.
 
-   */
-  let eventFromPromise:
-    Js.Promise.t('a) => event(Belt.Result.t('a, Js.Promise.error));
+ */
+  let eventFromPromise: Js.Promise.t<'a> => event<Belt.Result.t<'a, Js.Promise.error>>
   module Event: {
     /*
 
@@ -59,8 +57,8 @@ module Utils: {
        In other words, when a new event is emitted, the stream from
        the previous event is now ignored.
 
-     */
-    let join: event(event('a)) => event('a);
+ */
+    let join: event<event<'a>> => event<'a>
     /*
 
        Takes an event and a function that takes the value emitted by
@@ -69,7 +67,7 @@ module Utils: {
 
        Similar to Js.Promise.then_
 
-     */
-    let bind: (event('a), 'a => event('b)) => event('b);
-  };
-};
+ */
+    let bind: (event<'a>, 'a => event<'b>) => event<'b>
+  }
+}
